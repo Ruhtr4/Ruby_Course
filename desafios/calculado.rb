@@ -4,64 +4,44 @@ loop do
 		puts 'Escolha uma opção a seguir'
 		puts '(E)ntrar - para abrir a calculadora'
 		puts '(S)air - para sair da calculador'
+		puts '(Digite apenas a primeira letra da opção escolhida)'
 		print 'Opção: '
 
 		option = gets.chomp
 
 		resultado = ''
 
-		if option == "E"
+    case option
+		when "E","e"
 				puts 'O que você deseja fazer na calculadora:'
 				puts '(A)dição ou (S)ubtração'
 				puts '(D)ivisão ou (M)ultiplicação'
-				puts '(Digite apenas a primeira letra ou o numero da opção escolhida)'
 				print 'Calculo: '
 
 				resultado = gets.chomp
-
-		elsif option == "S"
+		when "S","s"
 				break
-		else
-				resultado = 'Não funcionou tente novamente'
 		end
-		
-		if resultado == "A"
+
+	case resultado
+	when "A","a","S","s","D","d","M","m"
 				print 'Escreva o primeiro valor: '
 				primeirov = gets.to_i
+				
 				print 'Escreva o segundo valor: '
 				segundov = gets.to_i
-
-				resultado = "#{primeirov} + #{segundov} = #{primeirov + segundov}"
-
-		elsif resultado == "S"
-				print 'Escreva o primeiro valor: '
-				primeirov = gets.to_i
-				print 'Escreva o segundo valor: '
-				segundov = gets.to_i
-
+		case resultado
+		when "A","a"
+			resultado = "#{primeirov} + #{segundov} = #{primeirov + segundov}"
+		when "S","s"
 				resultado = "#{primeirov} - #{segundov} = #{primeirov - segundov}"
-
-		elsif resultado == "D"
-				print 'Escreva o primeiro valor: '
-				primeirov = gets.to_i
-				print 'Escreva o segundo valor: '
-				segundov = gets.to_i
-
-				adicao = primeirov / segundov
-
-				resultado = "#{primeirov} / #{segundov} = #{adicao}"
-
-		elsif resultado == "M"
-				print 'Escreva o primeiro valor: '
-				primeirov = gets.to_i
-				print 'Escreva o segundo valor: '
-				segundov = gets.to_i
-
-				adicao = primeirov * segundov
-
-				resultado = "#{primeirov} * #{segundov} = #{adicao}"
+		when "D","d"
+				resultado = "#{primeirov} / #{segundov} = #{primeirov / segundov}"
+		when "M","m"
+				resultado = "#{primeirov} * #{segundov} = #{primeirov * segundov}"
+		end
 		else
 			resultado = 'Não funcionou tente novamente'
 		end
-	system "clear"
+		system "clear"
 end
